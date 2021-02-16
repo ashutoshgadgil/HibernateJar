@@ -1,0 +1,71 @@
+Hibernate
+
+         Easier communication between Java Application & database
+
+ORM Tool 
+          Tool to map the object into the database table
+          Uses JDBC API
+
+
+JPA (Java Persistance API)  : javax.persistence
+
+Advantages: 1) open source , lightweight
+            2) Database independent (HQL)
+            3) Automatic table creation
+            4) High performance 
+
+Hibernate Architecture:
+
+1) Java Application Layer
+2) Hibernate framwork
+3) Backend API
+4) Database 
+
+
+How to Create hibernate Simple Java Project
+
+1) Download all hibernate jars and put these jars in lib folder created by you.Also put jdbc-oracle.jar
+
+2) Create hibernate.cfg.xml file (Configuration file) in src folder & write contents in it
+
+   <?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-configuration PUBLIC
+		"-//Hibernate/Hibernate Configuration DTD 3.0//EN"
+		"http://www.hibernate.org/dtd/hibernate-configuration-3.0.dtd">
+<hibernate-configuration>
+    <session-factory>
+    <property name="hbm2ddl.auto">create</property>
+        <property name="hibernate.connection.driver_class">oracle.jdbc.driver.OracleDriver</property>
+        <property name="hibernate.connection.password">root</property>
+        <property name="hibernate.connection.url">jdbc:oracle:thin:@localhost:1521:xe</property>
+        <property name="hibernate.connection.username">system</property>
+        <property name="hibernate.dialect">org.hibernate.dialect.OracleDialect</property>
+        <mapping resource="Employee.hbm.xml"/>
+    </session-factory>
+</hibernate-configuration> 
+
+3) Create a Entity class (Employee.java)
+
+4) Create Employee.hbm.xml (mapping file) in the src folder.Write contents in it.
+
+
+
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 16 Feb, 2021 4:01:40 PM by Hibernate Tools 3.5.0.Final -->
+<hibernate-mapping>
+    <class name="org.myprogramms.Employee" table="EMPL5">
+        <id name="id" type="int">
+            <column name="ID" />
+            <generator class="assigned" />
+        </id>
+        <property name="name" type="java.lang.String">
+            <column name="NAME" />
+        </property>
+    </class>
+</hibernate-mapping>
+
+
+5) Create a Test file containing main() & run this java file.
+
